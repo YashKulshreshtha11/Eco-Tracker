@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Eco-Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #d1f4c6, #98c1d9);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        .contact-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .form-control {
+            border-radius: 10px;
+        }
+        .contact-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c7873;
+        }
+        .btn-custom {
+            background-color: #2c7873;
+            color: #fff;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #1b5e56;
+        }
+    </style>
+</head>
+<body>
+    <!-- Contact Us Section -->
+    <div class="contact-container">
+        <h2 class="contact-header"><i class="fas fa-envelope"></i> Get in Touch with Us</h2>
+        <p class="text-center">We’d love to hear from you! Please fill out the form below and we will get back to you as soon as possible.</p>
+        <form id="contactForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="name" class="form-label"><i class="fas fa-user"></i> Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Your Full Name" required>
+                <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Your Email Address" required>
+                <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label"><i class="fas fa-comment"></i> Message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+                <div class="invalid-feedback">Please enter your message.</div>
+            </div>
+            <button type="submit" class="btn btn-custom w-100"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+    </div>
+    <footer class="section text-center" style="color: white;">
+        <div class="container">
+          <p>&copy; 2024 Eco-Tracker. All Rights Reserved.</p>
+        </div>
+      </footer>
+
+    <!-- Bootstrap JS with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JS for form validation -->
+    <script>
+        // JavaScript for form validation and submission
+        (function () {
+            'use strict';
+            const form = document.querySelector('.needs-validation');
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        })();
+    </script>
+</body>
+</html>

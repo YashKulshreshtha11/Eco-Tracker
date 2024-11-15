@@ -1,0 +1,86 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.footer {
+    border-top: 4px solid #28a745;
+}
+
+.footer h5 {
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.footer a {
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #28a745;
+}
+
+.social-icons i {
+    font-size: 1.5rem;
+}
+
+.social-icons a:hover {
+    color: #28a745;
+}
+
+
+.footer a {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+
+.footer a:hover {
+    color: #00c853; 
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+.footer .social-icons a:hover {
+    color: #00c853; 
+    transform: scale(1.05); 
+    border-radius: 5px; 
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.footer:hover {
+    background-color: #343a40; 
+}
+
+
+.footer h5:hover {
+    color: #00c853; 
+}
+
+.navbar-nav .nav-item .nav-link {
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #00c853; 
+    background-color: rgba(255, 255, 255, 0.2); 
+    transform: scale(1.05);
+    border-radius: 5px; 
+}
+
+
+.navbar-brand:hover {
+    color: #00c853;
+    transform: scale(1.1); 
+}
+
+.navbar:hover {
+    background-color: #218838; 
+}
+
+
+.navbar-toggler:hover {
+    background-color: #28a745; /
+}

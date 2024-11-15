@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Eco-Tracker</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icon CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #cfd6dd;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar {
+      background-color: #006400;
+    }
+
+    .navbar-brand {
+      color: #fff !important;
+      font-size: 30px;
+    }
+
+    .section-heading {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #006400;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      background-color: #e6ffe6;
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      color: #006400;
+    }
+
+    .card-footer {
+      background-color: #006400;
+      color: white;
+    }
+
+    .btn-custom {
+      background-color: #006400;
+      color: white;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .btn-custom:hover {
+      background-color: #004d00;
+      transition: background-color 0.3s;
+    }
+
+    .section {
+      padding: 50px 0;
+    }
+
+    .image-container {
+      position: relative;
+    }
+
+    .image-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color:white;
+      font-size: 1.5rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 1.5s ease-out forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .feature-section {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .feature-section .card {
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Eco-Tracker</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="section" style="background-image: url('https://source.unsplash.com/1600x900/?nature,eco'); background-size: cover;">
+    <div class="container text-center text-white">
+      <h1 data-aos="fade-up" class="display-4">Welcome to The Eco-Tracker</h1>
+      <p data-aos="fade-up" class="lead">Track your eco-footprint and take steps towards a sustainable future!</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-heading" data-aos="fade-up">About the Project</h2>
+      <p class="text-center" data-aos="fade-up">Eco-Tracker is designed to help individuals track their environmental footprint through an interactive and engaging platform. Our goal is to raise awareness about sustainability and encourage people to reduce their carbon footprint.</p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section feature-section">
+    <div class="card" data-aos="fade-up">
+      <div class="card-body text-center">
+        <i class="feature-icon fas fa-user-plus"></i>
+        <h4>User Account Creation</h4>
+        <p>Register for an account to track your eco-footprint, set goals, and monitor your progress.</p>
+        <a href="index.html#signup" class="btn btn-custom">Sign Up</a>
+      </div>
+      <div class="card-footer text-center">
+        <small>Easy registration with your email or social media accounts.</small>
+      </div>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <div class="card-body text-center">
+        <i class="feature-icon fas fa-poll-h"></i>
+        <h4>Interactive Test</h4>
+        <p>Take our fun quiz to calculate your current eco-footprint and discover ways to improve.</p>
+        <a href="./index.html#signup" class="btn btn-custom">Take the Test</a>
+      </div>
+      <div class="card-footer text-center">
+        <small>Get real-time feedback and track your progress.</small>
+      </div>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <div class="card-body text-center">
+        <i class="feature-icon fas fa-chart-line"></i>
+        <h4>Personalized Results</h4>
+        <p>Receive tailored suggestions on how to reduce your carbon footprint and live more sustainably.</p>
+        <a href="./index.html#signup" class="btn btn-custom">See Your Results</a>
+      </div>
+      <div class="card-footer text-center">
+        <small>Stay motivated with personalized insights and goals.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="section text-center" style="background-color: #006400; color: white;">
+    <div class="container">
+      <p>&copy; 2024 Eco-Tracker. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- AOS Library for animations -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    // Initialize AOS for animations
+    AOS.init({
+      duration: 1000,
+    });
+  </script>
+</body>
+
+</html>

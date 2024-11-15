@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Friendly Lifestyle Test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #4caf50, #81c784);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(to right, #4caf50, #81c784); }
+            50% { background: linear-gradient(to right, #66bb6a, #338a3e); }
+            100% { background: linear-gradient(to right, #4caf50, #81c784); }
+        }
+
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        .question {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .btn-start {
+            background-color: #357a38;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-start:hover {
+            background-color: #2c6c2a;
+        }
+
+        .btn-submit {
+            background-color: #357a38;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* Hidden initially */
+        }
+
+        .btn-submit:hover {
+            background-color: #2c6c2a;
+        }
+
+        #result {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 1s forwards;
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-group {
+            border-bottom: 2px solid #fff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 30px;
+            transition: width 0.5s ease;
+        }
+
+        .btn-hover {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="background-music" loop volume="1.0">
+        <source src="../Background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <h2 class="text-center">Eco-Friendly Lifestyle Test <i class="fas fa-leaf"></i></h2>
+        
+        <!-- Start Test Button -->
+        <button id="startTestBtn" class="btn-start">Start Test</button>
+
+        <!-- Test Form (Initially hidden) -->
+        <form id="ecoForm" style="display: none;">
+            <div class="question-group">
+                <label class="question">🌱 Do you use energy-efficient appliances?</label><br>
+                <input type="radio" name="energy" value="10"> Yes <br>
+                <input type="radio" name="energy" value="0"> No
+            </div>
+            
+            <div class="question-group">
+                <label class="question">🚶 How do you commute most often?</label><br>
+                <input type="radio" name="transport" value="10"> Public Transport/Cycle/Walk <br>
+                <input type="radio" name="transport" value="5"> Carpool/Shared Vehicle <br>
+                <input type="radio" name="transport" value="0"> Personal Vehicle
+            </div>
+        
+            <div class="question-group">
+                <label class="question">♻️ Do you practice recycling regularly?</label><br>
+                <input type="radio" name="recycling" value="10"> Yes <br>
+                <input type="radio" name="recycling" value="0"> No
+            </div>
+        
+            <div class="question-group">
+                <label class="question">🥗 How often do you eat plant-based meals?</label><br>
+                <input type="radio" name="diet" value="10"> Daily <br>
+                <input type="radio" name="diet" value="5"> Few times a week <br>
+                <input type="radio" name="diet" value="0"> Rarely/Never
+            </div>
+        
+            <div class="question-group">
+                <label class="question">🚭 Do you smoke?</label><br>
+                <input type="radio" name="smoking" value="0"> Yes <br>
+                <input type="radio" name="smoking" value="10"> No
+            </div>
+        
+            <div class="question-group">
+                <label class="question">🌍 Are you conscious about your water usage?</label><br>
+                <input type="radio" name="water" value="10"> Yes, I use water-saving devices <br>
+                <input type="radio" name="water" value="0"> No, I don't think about water usage
+            </div>
+        
+            <div class="question-group">
+                <label class="question">💡 Do you use natural light whenever possible?</label><br>
+                <input type="radio" name="light" value="10"> Yes <br>
+                <input type="radio" name="light" value="0"> No
+            </div>
+        
+            <div class="question-group">
+                <label class="question">📦 Do you avoid using plastic bags and opt for reusable bags?</label><br>
+                <input type="radio" name="plastic" value="10"> Yes, always <br>
+                <input type="radio" name="plastic" value="0"> No, I use plastic bags often
+            </div>
+        
+            <div class="question-group">
+                <label class="question">🍂 Do you reduce, reuse, and repurpose items instead of discarding them?</label><br>
+                <input type="radio" name="reuse" value="10"> Yes, whenever possible <br>
+                <input type="radio" name="reuse" value="0"> No, I discard items regularly
+            </div>
+        
+            <div class="question-group">
+                <label class="question">🏠 Do you have energy-saving habits at home, like turning off lights when not in use?</label><br>
+                <input type="radio" name="energyhabits" value="10"> Yes, consistently <br>
+                <input type="radio" name="energyhabits" value="0"> No, I often forget
+            </div>
+        </form>
+        
+            <!-- Submit Button -->
+            <button type="button" class="btn btn-primary btn-submit btn-hover" onclick="calculateScore()">Submit</button>
+        </form>
+
+        <div id="result" class="mt-4 p-3 text-center"></div>
+        <div class="progress mt-4">
+            <div class="progress-bar bg-success" role="progressbar" id="progress-bar" style="width: 0%"></div>
+        </div>
+    </div>
+
+    <script>
+        // Start music and show the test form when the user clicks the "Start Test" button
+        document.getElementById('startTestBtn').addEventListener('click', function() {
+            var music = document.getElementById('background-music');
+            var form = document.getElementById('ecoForm');
+            var startButton = document.getElementById('startTestBtn');
+            var submitButton = document.querySelector('.btn-submit');
+
+            // Play music
+            music.play();
+
+            // Hide the "Start Test" button and show the test form
+            startButton.style.display = 'none';
+            form.style.display = 'block';
+            
+            // Show the Submit button
+            submitButton.style.display = 'inline-block';
+        });
+        // Function to simulate API call for improvement feedback
+        function getImprovementFeedback(score) {
+            if (score < 46) {
+                return "You're doing very little to support an eco-friendly lifestyle.";
+            } else if (score < 70) {
+                return "You're making some efforts, but there is room for improvement.";
+            } else {
+                return "You're on the right track! Keep up your efforts and continue making more eco-friendly choices.";
+            }
+        }
+
+        // Function to calculate score
+        function calculateScore() {
+            let form = document.getElementById('ecoForm');
+            let totalScore = 0;
+            let totalPossibleScore = 100; // Total possible score based on the questions
+            let unanswered = false; // To check if any question is unanswered
+
+            // Collect scores from radio inputs
+            const inputs = form.querySelectorAll('input[type="radio"]:checked');
+            
+            if (inputs.length < 7) { // If less than 7 answers are selected
+                unanswered = true;
+                alert("Please answer all questions before submitting.");
+                return; // Stop further execution if not all questions are answered
+            }
+
+            // Calculate score if all questions are answered
+            inputs.forEach(input => {
+                totalScore += parseInt(input.value);
+            });
+
+            // Calculate percentage score
+            let percentage = (totalScore / totalPossibleScore) * 100;
+            document.getElementById('progress-bar').style.width = `${percentage}%`; // Update progress bar
+
+            const resultDiv = document.getElementById('result');
+            let feedback = getImprovementFeedback(percentage);
+            if (percentage >= 70) {
+                resultDiv.innerHTML = `<h3 class="text-success">You're Eco-Friendly! 🌍</h3><p>Your score: ${percentage.toFixed(2)}%. ${feedback}</p>`;
+                resultDiv.style.backgroundColor = '#d4edda';
+            }
+            else if(percentage >=45 && percentage<=69){
+                resultDiv.innerHTML = `<h3 class="text-warning">You're in average-case of Eco-Friendly! ⚡</h3><p>Your score: ${percentage.toFixed(2)}%. ${feedback}</p>`;
+                resultDiv.style.backgroundColor = '#fff3cd';
+            }else{
+                resultDiv.innerHTML = `<h3 class="text-danger">You need improvement! ⚡</h3><p>Your score: ${percentage.toFixed(2)}%. ${feedback}</p>`;
+                resultDiv.style.backgroundColor = '#f8d7da';
+            }
+         }
+
+    </script>
+</body>
+</html>
