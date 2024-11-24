@@ -40,6 +40,32 @@
         .btn-custom:hover {
             background-color: #1b5e56;
         }
+        /* Make sure the form and footer are responsive */
+        @media (max-width: 576px) {
+            .contact-container {
+                padding: 20px;
+            }
+            .contact-header {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Responsive typography and spacing */
+        @media (max-width: 768px) {
+            .contact-header {
+                font-size: 1.8rem;
+            }
+            .btn-custom {
+                padding: 12px;
+            }
+        }
+
+        /* Adjust padding and margin on large screens */
+        @media (min-width: 992px) {
+            .contact-container {
+                padding: 40px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -66,11 +92,13 @@
             <button type="submit" class="btn btn-custom w-100"><i class="fas fa-paper-plane"></i> Send Message</button>
         </form>
     </div>
+
+    <!-- Footer Section -->
     <footer class="section text-center" style="color: white;">
         <div class="container">
           <p>&copy; 2024 Eco-Tracker. All Rights Reserved.</p>
         </div>
-      </footer>
+    </footer>
 
     <!-- Bootstrap JS with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>

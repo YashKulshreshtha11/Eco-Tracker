@@ -54,3 +54,12 @@ button:hover {
 .low-score {
     border: 6px solid red;
 }
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        padding: 10px;
+    }
+}

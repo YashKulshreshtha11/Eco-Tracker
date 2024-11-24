@@ -1,9 +1,12 @@
+/* Global Styles */
 html {
     scroll-behavior: smooth;
 }
 
+/* Footer Styles */
 .footer {
     border-top: 4px solid #28a745;
+    padding: 20px 0;
 }
 
 .footer h5 {
@@ -29,11 +32,10 @@ html {
     color: #28a745;
 }
 
-
+/* Social icons hover effect */
 .footer a {
     transition: color 0.3s ease, transform 0.3s ease;
 }
-
 
 .footer a:hover {
     color: #00c853; 
@@ -48,20 +50,19 @@ html {
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
-
+/* Footer Hover Effects */
 .footer:hover {
     background-color: #343a40; 
 }
-
 
 .footer h5:hover {
     color: #00c853; 
 }
 
+/* Navbar Styles */
 .navbar-nav .nav-item .nav-link {
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
-
 
 .navbar-nav .nav-item .nav-link:hover {
     color: #00c853; 
@@ -69,7 +70,6 @@ html {
     transform: scale(1.05);
     border-radius: 5px; 
 }
-
 
 .navbar-brand:hover {
     color: #00c853;
@@ -80,7 +80,67 @@ html {
     background-color: #218838; 
 }
 
-
+/* Navbar Toggler */
 .navbar-toggler:hover {
-    background-color: #28a745; /
+    background-color: #28a745;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    /* Ensure dustbins are displayed properly */
+    .dustbin {
+        display: inline-block;
+        margin: 10px;
+        width: 100px; /* Adjust width as needed */
+        height: 100px;
+        background-color: green;
+        border-radius: 50%;
+        transition: transform 0.3s ease;
+    }
+
+    .dustbin:hover {
+        transform: scale(1.1); /* Slightly enlarge on hover */
+    }
+
+    /* Flexbox Layout for Dustbins */
+    .dustbin-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Center dustbins horizontally */
+        gap: 10px; /* Add some space between dustbins */
+    }
+
+    .waste {
+        width: 80px; /* Adjust size of waste items */
+        height: 80px;
+    }
+
+    .message, .timer, .score {
+        font-size: 16px;
+    }
+
+    .footer {
+        padding: 15px;
+    }
+}
+
+/* Default Layout for Larger Screens */
+.dustbin-container {
+    display: flex;
+    justify-content: space-evenly; /* Even space between dustbins */
+    gap: 20px;
+    padding: 20px;
+}
+
+.dustbin {
+    width: 120px;
+    height: 120px;
 }

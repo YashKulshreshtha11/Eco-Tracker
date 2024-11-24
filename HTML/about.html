@@ -81,7 +81,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      color:white;
+      color: white;
       font-size: 1.5rem;
       background-color: rgba(0, 0, 0, 0.5);
       padding: 10px;
@@ -106,10 +106,62 @@
       justify-content: space-around;
       align-items: center;
       gap: 30px;
+      flex-wrap: wrap;
     }
 
     .feature-section .card {
       width: 300px;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 24px;
+      }
+
+      .section-heading {
+        font-size: 1.8rem;
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+      }
+
+      .feature-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .feature-section .card {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .btn-custom {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-brand {
+        font-size: 20px;
+      }
+
+      .section-heading {
+        font-size: 1.5rem;
+      }
+
+      .feature-icon {
+        font-size: 2rem;
+      }
+
+      .feature-section .card {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -158,6 +210,18 @@
         <h4>Interactive Test</h4>
         <p>Take our fun quiz to calculate your current eco-footprint and discover ways to improve.</p>
         <a href="./index.html#signup" class="btn btn-custom">Take the Test</a>
+      </div>
+      <div class="card-footer text-center">
+        <small>Get real-time feedback and track your progress.</small>
+      </div>
+    </div>
+
+    <div class="card" data-aos="fade-up">
+      <div class="card-body text-center">
+        <i class="feature-icon fas fa-poll-h"></i>
+        <h4>Eco-Mind Games</h4>
+        <p>Take our fun games to improve your current eco-footprint and get your eco-score</p>
+        <a href="../Game/index.html" class="btn btn-custom">Let's Play</a>
       </div>
       <div class="card-footer text-center">
         <small>Get real-time feedback and track your progress.</small>
