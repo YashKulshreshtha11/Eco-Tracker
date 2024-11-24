@@ -85,11 +85,6 @@
             margin-bottom: 20px;
         }
 
-        .progress-bar {
-            height: 30px;
-            transition: width 0.5s ease;
-        }
-
         .btn-hover {
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -101,12 +96,6 @@
     </style>
 </head>
 <body>
-    <!-- Background Music -->
-    <audio id="background-music" loop volume="1.0">
-        <source src="../Background-music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
     <div class="container">
         <h2 class="text-center">Eco-Friendly Lifestyle Test <i class="fas fa-leaf"></i></h2>
         
@@ -183,80 +172,56 @@
         </form>
 
         <div id="result" class="mt-4 p-3 text-center"></div>
-        <div class="progress mt-4">
-            <div class="progress-bar bg-success" role="progressbar" id="progress-bar" style="width: 0%"></div>
-        </div>
     </div>
 
     <script>
-        // Start music and show the test form when the user clicks the "Start Test" button
-        document.getElementById('startTestBtn').addEventListener('click', function() {
-            var music = document.getElementById('background-music');
-            var form = document.getElementById('ecoForm');
-            var startButton = document.getElementById('startTestBtn');
-            var submitButton = document.querySelector('.btn-submit');
+    document.getElementById('startTestBtn').addEventListener('click', function() {
+    var music = document.getElementById('background-music');
+    var form = document.getElementById('ecoForm');
+    var startButton = document.getElementById('startTestBtn');
+    var submitButton = document.querySelector('.btn-submit');
+    
+    startButton.style.display = 'none'; // Hide start button
+    form.style.display = 'block'; // Show form
+    submitButton.style.display = 'inline-block'; // Show submit button
+});
 
-            // Play music
-            music.play();
+function calculateScore() {
+    let form = document.getElementById('ecoForm');
+    let totalScore = 0;
+    let unanswered = false;
 
-            // Hide the "Start Test" button and show the test form
-            startButton.style.display = 'none';
-            form.style.display = 'block';
-            
-            // Show the Submit button
-            submitButton.style.display = 'inline-block';
-        });
-        // Function to simulate API call for improvement feedback
-        function getImprovementFeedback(score) {
-            if (score < 46) {
-                return "You're doing very little to support an eco-friendly lifestyle.";
-            } else if (score < 70) {
-                return "You're making some efforts, but there is room for improvement.";
-            } else {
-                return "You're on the right track! Keep up your efforts and continue making more eco-friendly choices.";
-            }
-        }
+    const inputs = form.querySelectorAll('input[type="radio"]:checked');
 
-        // Function to calculate score
-        function calculateScore() {
-            let form = document.getElementById('ecoForm');
-            let totalScore = 0;
-            let totalPossibleScore = 100; // Total possible score based on the questions
-            let unanswered = false; // To check if any question is unanswered
+    if (inputs.length < 7) { // Ensure all questions are answered
+        unanswered = true;
+        alert("Please answer all questions before submitting.");
+        return;
+    }
 
-            // Collect scores from radio inputs
-            const inputs = form.querySelectorAll('input[type="radio"]:checked');
-            
-            if (inputs.length < 7) { // If less than 7 answers are selected
-                unanswered = true;
-                alert("Please answer all questions before submitting.");
-                return; // Stop further execution if not all questions are answered
-            }
+    // Calculate total score
+    inputs.forEach(input => {
+        totalScore += parseInt(input.value);
+    });
 
-            // Calculate score if all questions are answered
-            inputs.forEach(input => {
-                totalScore += parseInt(input.value);
-            });
+    let percentage = (totalScore / 100) * 100;
+    localStorage.setItem('progressPercentage', percentage); // Store in localStorage
+    redirectToResultPage(percentage); // Redirect based on score
+}
 
-            // Calculate percentage score
-            let percentage = (totalScore / totalPossibleScore) * 100;
-            document.getElementById('progress-bar').style.width = `${percentage}%`; // Update progress bar
+function redirectToResultPage(percentage) {
+    let resultPage;
 
-            const resultDiv = document.getElementById('result');
-            let feedback = getImprovementFeedback(percentage);
-            if (percentage >= 70) {
-                resultDiv.innerHTML = `<h3 class="text-success">You're Eco-Friendly! 🌍</h3><p>Your score: ${percentage.toFixed(2)}%. ${feedback}</p>`;
-                resultDiv.style.backgroundColor = '#d4edda';
-            }
-            else if(percentage >=45 && percentage<=69){
-                resultDiv.innerHTML = `<h3 class="text-warning">You're in average-case of Eco-Friendly! ⚡</h3><p>Your score: ${percentage.toFixed(2)}%. ${feedback}</p>`;
-                resultDiv.style.backgroundColor = '#fff3cd';
-            }else{
-                resultDiv.innerHTML = `<h3 class="text-danger">You need improvement! ⚡</h3><p>Your score: ${percentage.toFixed(2)}%. ${feedback}</p>`;
-                resultDiv.style.backgroundColor = '#f8d7da';
-            }
-         }
+    if (percentage>= 70) {
+        resultPage = 'result_high.html'; // Page for high eco-friendly score
+    } else if (percentage >= 46) {
+        resultPage = 'result_average.html'; // Page for average score
+    } else {
+        resultPage = 'result_low.html'; // Page for low score
+    }
 
-    </script>
+    window.location.href = resultPage; // Redirect to the respective page
+}
+</script>
 </body>
 </html>
