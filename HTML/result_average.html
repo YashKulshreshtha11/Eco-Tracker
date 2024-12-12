@@ -5,16 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Average Eco-Friendly Score</title>
     <link rel="stylesheet" href="../CSS/result.css">
+    
 </head>
 <body>
     <div class="result-container average-score">
         <h1>You're Average in Eco-Friendliness ⚡</h1>
         <p>You're on the right track, but there’s room for improvement!</p>
+        <div class="badge-container" id="badgeContainer">
+            <img src="../images/Avg_Badge.jpg" alt="Eco Average Badge">
+        </div>
         <a href="./Insights/insight_avg.html" class="cta">Access Full Insights</a><br><br>
 
         <button onclick="goBack()">Back to Test</button>
     </div>
+    <div class="confetti" id="confetti"></div>
+
+    <audio id="soundEffect" src="../Music/intermediate_badge.mp3" autoplay></audio>
+
     <script>
+        window.onload = function() {
+            // Trigger the blast effect and play sound
+            document.getElementById("badgeContainer").classList.add("show-badge");
+            document.getElementById("soundEffect").play();
+            startConfetti();
+        };
+
+        function startConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            confettiContainer.style.display = 'block';
+            const colors = ['#ff66cc', '#ffcc00', '#66ccff', '#ff3366', '#00cc66'];
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.style.left = Math.random() * 100 + 'vw';
+                confettiPiece.style.animationDuration = Math.random() * 2 + 3 + 's';
+                confettiPiece.style.animationDelay = Math.random() * 2 + 's';
+                confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+
         function goBack() {
             window.location.href = 'form.html'; // Redirect to the main page
         }

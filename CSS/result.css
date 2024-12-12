@@ -16,11 +16,14 @@ body {
     background: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 80%;
-    max-width: 400px;
+    height: 90.9%;
+    max-width: 500px;
+    position: relative; /* Added for badge positioning */
 }
 
 .result-container h1 {
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .result-container p {
@@ -55,6 +58,18 @@ button:hover {
     border: 6px solid red;
 }
 
+/* Badge Styling */
+.badge-container {
+    position: relative; 
+    margin: 0 auto; 
+    margin-bottom: 20px; 
+}
+
+.badge-container img {
+    max-width: 200px; 
+    height: auto; 
+}
+
 @media (max-width: 600px) {
     body {
         font-size: 14px;
@@ -62,4 +77,103 @@ button:hover {
     .container {
         padding: 10px;
     }
+    .badge-container {
+        margin-bottom: 10px; /* Adjust spacing for smaller screens */
+    }
 }
+
+
+#badgeContainer {
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Combined transition */
+}
+
+#badgeContainer.show-badge {
+    opacity: 1;
+    animation: blast 1s ease-in-out;
+}
+
+@keyframes blast {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: random;
+            animation: confetti 1s ease-out forwards;
+        }
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0);
+            }
+            100% {
+                transform: translateY(730px) rotate(360deg);
+            }
+        }
+
+        /* Additional styling to make the badge and text fabulous */
+        .badge-container {
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+
+        .show-badge {
+            transform: scale(1.2);
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #28a745;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-top: 20px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta:hover {
+            background-color: #218838;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+

@@ -10,11 +10,22 @@
     <div class="result-container low-score">
         <h1>You Need Improvement! ⚡</h1>
         <p>Consider making more eco-friendly choices to protect our planet.</p>
+        <div class="badge-container" id="badgeContainer">
+            <img src="../images/low_Badge.jpg" alt="Eco Low Badge">
+        </div>
         <a href="./Insights/insight_low.html" class="cta">Access Full Insights</a><br><br>
         <button onclick="goBack()">Back to Test</button>
         
     </div>
+    <audio id="soundEffect" src="celebration.mp3"></audio>
+
     <script>
+        window.onload = function() {
+            // Trigger the blast effect and play sound
+            document.getElementById("badgeContainer").classList.add("show-badge");
+            document.getElementById("soundEffect").play();
+        };
+
         function goBack() {
             window.location.href = 'form.html'; // Redirect to the main page
         }

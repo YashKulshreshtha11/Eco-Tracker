@@ -29,7 +29,6 @@ dustbins.forEach((bin) => {
     const wasteType = e.dataTransfer.getData('text/plain');
     const binType = bin.getAttribute('data-type');
 
-    // Check if this waste item is already correctly dropped
     if (correctDrops.has(wasteType)) {
       message.textContent = 'This item is already sorted!';
       message.style.color = 'orange';
@@ -41,9 +40,8 @@ dustbins.forEach((bin) => {
       message.style.color = 'green';
       score++;
       scoreElement.textContent = `Score: ${score}`;
-      correctDrops.add(wasteType); // Mark this waste as correctly dropped
+      correctDrops.add(wasteType);
 
-      // Check if score limit is reached
       if (score >= scoreLimit) {
         endGame('Congratulations! You reached the maximum score!', 'green');
       }
@@ -60,24 +58,21 @@ function handleTouchStart(e) {
   if (!waste) return;
   e.preventDefault();
 
-  // Check if this waste item has already been sorted
   const wasteType = waste.getAttribute('data-type');
   if (correctDrops.has(wasteType)) {
     message.textContent = 'This item is already sorted!';
     message.style.color = 'orange';
-    return;  // Prevent further interaction with this waste item
+    return;
   }
-  
-  waste.setAttribute('data-touch-start', 'true'); // Mark the waste as touched
+
+  waste.setAttribute('data-touch-start', 'true');
   waste.style.position = 'absolute';
   waste.style.zIndex = 1000;
-  
-  // Calculate touch position
+
   const touch = e.touches[0];
   waste.style.left = `${touch.pageX - waste.offsetWidth / 2}px`;
   waste.style.top = `${touch.pageY - waste.offsetHeight / 2}px`;
 
-  // Follow the touch movement
   function handleTouchMove(e) {
     const touch = e.touches[0];
     waste.style.left = `${touch.pageX - waste.offsetWidth / 2}px`;
@@ -86,7 +81,7 @@ function handleTouchStart(e) {
 
   function handleTouchEnd(e) {
     const touch = e.changedTouches[0];
-    
+
     dustbins.forEach((bin) => {
       const binRect = bin.getBoundingClientRect();
       const wasteRect = waste.getBoundingClientRect();
@@ -98,14 +93,12 @@ function handleTouchStart(e) {
         wasteRect.bottom > binRect.top
       ) {
         const binType = bin.getAttribute('data-type');
-        
-        // Check if it is correct
         if (wasteType === binType) {
           message.textContent = 'Correct! Keep it up!';
           message.style.color = 'green';
           score++;
           scoreElement.textContent = `Score: ${score}`;
-          correctDrops.add(wasteType);  // Mark this waste as correctly dropped
+          correctDrops.add(wasteType);
         } else {
           message.textContent = 'Incorrect! Try again.';
           message.style.color = 'red';
@@ -113,7 +106,6 @@ function handleTouchStart(e) {
       }
     });
 
-    // Reset the position of the waste item
     waste.style.position = '';
     waste.style.zIndex = '';
     waste.removeEventListener('touchmove', handleTouchMove);
@@ -142,43 +134,57 @@ let timerInterval = setInterval(() => {
 submitButton.addEventListener('click', () => {
   clearInterval(timerInterval);
   endGame(`You submitted! Final Score: ${score}`, 'blue');
+  // Show the "Show Badge" button
+  showBadgeButton.style.display = 'block';
 });
 
-restartButton.addEventListener('click', restartGame); // Restart game logic
+
+restartButton.addEventListener('click', restartGame);
+
+// Add logic for "Show Badge" functionality
+const showBadgeButton = document.getElementById('show-badge-btn');
+
+showBadgeButton.addEventListener('click', () => {
+  if (score >= 6) {
+    window.location.href = 'high_badge.html';
+  } else if (score > 3 && score < 6) {
+    window.location.href = 'avg_badge.html';
+  } else {
+    window.location.href = 'low_badge.html';
+  }
+});
 
 // End Game Logic
 function endGame(finalMessage, color) {
   message.textContent = finalMessage;
   message.style.color = color;
-  
-  // Stop music
+
   backgroundMusic.pause();
   backgroundMusic.currentTime = 0;
 
-  // Disable drag and drop
   wasteItems.forEach((waste) => {
     waste.setAttribute('draggable', 'false');
   });
+
+  showBadgeButton.style.display = 'block';
 }
 
 // Restart Game Logic
 function restartGame() {
-  // Reset variables
   timeLeft = 60;
   score = 0;
   correctDrops.clear();
 
-  // Reset UI
   timerElement.textContent = `Time Left: ${timeLeft}s`;
   scoreElement.textContent = `Score: ${score}`;
   message.textContent = '';
 
-  // Enable drag and drop
   wasteItems.forEach((waste) => {
     waste.setAttribute('draggable', 'true');
   });
 
-  // Restart timer
+  showBadgeButton.style.display = 'none';
+
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
     timeLeft--;
@@ -190,6 +196,5 @@ function restartGame() {
     }
   }, 1000);
 
-  // Restart music
   backgroundMusic.play();
 }

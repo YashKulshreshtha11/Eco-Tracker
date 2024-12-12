@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eco-Friendly High Score</title>
+    <title>Eco-Mind Champion</title>
     <link rel="stylesheet" href="../CSS/result.css">
 </head>
 <body>
     <div class="result-container high-score">
-        <h1>You're Eco-Friendly! 🌍</h1>
-        <p>Congratulations! You're making a great impact with your eco-friendly choices.</p>
+        <h1>Oops! You Need Improvement! 🎯 </h1>
+        <p>Kindly re-attempt the game..</p>
         <div class="badge-container" id="badgeContainer">
-            <img src="../images/High_Badge.jpg" alt="Eco Champion Badge">
+            <img src="../images/low_Badge.jpg" alt="Eco-Mind Champion Badge"><br><br>
         </div>
-        <a href="./Insights/insight_high.html" class="cta">Access Full Insights</a><br><br>
         <button onclick="goBack()">Back to Test</button>
     </div>
 
     <div class="confetti" id="confetti"></div>
-
-    <audio id="soundEffect" src="../Music/High_badge.mp3" autoplay></audio>
 
     <script>
         window.onload = function() {
@@ -44,7 +41,7 @@
         }
 
         function goBack() {
-            window.location.href = 'form.html';
+            window.location.href = 'index.html';
         }
     </script>
 </body>
